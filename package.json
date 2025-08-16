@@ -1,0 +1,14 @@
+{
+  "name": "file-tracker",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Local file activity tracker",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "chokidar": "^4.0.3",
+    "dotenv": "^16.6.1"
+  }
+}
