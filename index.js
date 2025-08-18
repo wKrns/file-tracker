@@ -12,7 +12,7 @@ dotenv.config();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// ---------- Utils ----------
+// ---------- Utils tah augustus prime pas 2 crack ici fils ----------
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 function nowIso() {
@@ -65,7 +65,7 @@ function rel(p, baseList) {
   return p;
 }
 
-// ---------- Config ----------
+// ---------- Config tah KRNSV2 sur RINA mon NIGGER ----------
 const DEFAULT_PATHS = (() => {
   const USERPROFILE = process.env.USERPROFILE || os.homedir();
   const DOWNLOADS = path.join(USERPROFILE, "Downloads");
@@ -92,9 +92,9 @@ const defaultConfig = {
     "**/*.temp",
     "**/~$*"
   ],
-  hashMaxBytes: 10 * 1024 * 1024, // 10 MB
+  hashMaxBytes: 10 * 1024 * 1024, // 10 MB prsk sinon mon script crash mon nigga
   logDir: path.join(__dirname, "logs"),
-  discordWebhook: process.env.DISCORD_WEBHOOK || "", // mettre ton webhook dans .env
+  discordWebhook: process.env.DISCORD_WEBHOOK || "", // mettre ton webhook dans .env fils de pute
   webhookMinIntervalMs: 4000, // anti-spam prsk ton pc pas ouf va crash
   verbose: true
 };
@@ -107,14 +107,14 @@ if (fs.existsSync(configPath)) {
     const userCfg = JSON.parse(fs.readFileSync(configPath, "utf8"));
     config = { ...config, ...userCfg };
   } catch (e) {
-    console.warn("[!] config.json invalide, utilisation de la config par défaut.", e.message);
+    console.warn("[!] config.json invalide gros negres , utilisation de la config par défaut.", e.message);
   }
 }
 
 // Crée /logs
 ensureDirSync(config.logDir);
 
-// ---------- Logging NDJSON meme si c inutile ----------
+// ---------- Logging NDJSON meme si c inutile tocard  ----------
 function logLine(obj) {
   const day = new Date().toISOString().slice(0, 10);
   const file = path.join(config.logDir, `filetracker-${day}.ndjson`);
@@ -170,11 +170,11 @@ function alertEmbed({ title, description, color = 16742886, fields = [] }) {
   };
 }
 
-// ---------- Watcher ----------
+// ---------- Watcher ta meuf sous la douche ----------
 function startWatcher() {
   const watchList = config.watch.filter((p) => fs.existsSync(p));
   if (watchList.length === 0) {
-    console.error("Aucun dossier existant à surveiller. Vérifie 'watch' dans config.json.");
+    console.error("Aucun dossier à surveiller nigga. Vérifie 'watch' ou NTGRM dans config.json.");
     process.exit(1);
   }
 
@@ -207,7 +207,7 @@ function startWatcher() {
         await sendWebhook(
           alertEmbed({
             title: "🟥 Suspicious file",
-            description: "Un fichier potentiellement sensible vient d’être créé.",
+            description: "Un fichier sus créé.",
             fields: [
               { name: "Path", value: "```" + p + "```" },
               ...(item.size != null ? [{ name: "Size", value: sizePretty(item.size), inline: true }] : []),
@@ -248,14 +248,14 @@ function startWatcher() {
       console.log("✅ Ready. Tracking changes...");
     });
 
-  // Burst deletion detector (simple)
+  // Burst deletion detector (simple prsk sinon t trop con)
   let deletionBuffer = [];
   setInterval(async () => {
     if (deletionBuffer.length >= 10) {
       const sample = deletionBuffer.slice(0, 5).map((p) => "- " + p).join("\n");
       await sendWebhook(
         alertEmbed({
-          title: "🟧 Many deletions detected",
+          title: "🟧 Many deletions detected beacause of nigger",
           description: `Supprimés: **${deletionBuffer.length}** fichiers ces 30s.\n\`\`\`\n${sample}\n...\n\`\`\``,
           color: 16753920
         })
@@ -275,8 +275,9 @@ async function safeStat(p) {
 
 startWatcher();
 
-// Graceful shutdown
+// Graceful shutdown because ur a stoopid nigger
 process.on("SIGINT", () => {
   console.log("\nBye.");
   process.exit(0);
 });
+
